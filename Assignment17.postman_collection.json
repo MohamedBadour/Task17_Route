@@ -1,0 +1,42 @@
+﻿{
+  "info": {
+    "name": "Assignment17_GraphQL",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GraphQL Queries",
+      "item": [
+        {
+          "name": "Get All Posts",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "graphql",
+              "graphql": {
+                "query": "query GetAllPosts { getAllPosts { id title content likes userId { id name email } } }"
+              }
+            },
+            "url": "http://localhost:3000/graphql"
+          }
+        },
+        {
+          "name": "Create Post Mutation",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "graphql",
+              "graphql": {
+                "query": "mutation CreatePost($title: String!, $content: String!, $userId: ID!) { createPost(title: $title, content: $content, userId: $userId) { id title content likes } }",
+                "variables": "{\"title\": \"GraphQL Post\", \"content\": \"Exploring GraphQL in Route backend\", \"userId\": \"672bb0000000000000000001\"}"
+              }
+            },
+            "url": "http://localhost:3000/graphql"
+          }
+        }
+      ]
+    }
+  ]
+}
